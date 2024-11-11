@@ -18,6 +18,7 @@ function InitializeElements() {
     pomodoroTimer.innerText = "pomodoro";
     pomodoroTimer.addEventListener("click", () => {
         minutes = 25;
+        countTimer.innerText = '25:00';
     });
 
     const shortBreakTimer = document.createElement("button");
@@ -25,12 +26,14 @@ function InitializeElements() {
     shortBreakTimer.innerText = "short break";
     shortBreakTimer.addEventListener("click", () => {
         minutes = 5;
+        countTimer.innerText = '05:00';
     });
     const longBreakTimer = document.createElement("button");
     longBreakTimer.classList.add("pomodoroTimer", "timer");
     longBreakTimer.innerText = "long break";
     longBreakTimer.addEventListener("click", () => {
         minutes = 15;
+        countTimer.innerText = '15:00';
     });
     timerType.append(pomodoroTimer,shortBreakTimer,longBreakTimer);
 
