@@ -1,2 +1,4 @@
 import "./styles.css";
-console.log("Everything works !");
+import { InitializeElements } from "./dom";
+
+InitializeElements();
