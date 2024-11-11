@@ -7,7 +7,9 @@ function timer() {
     let intervalID = setInterval(() => {
         timeCount.set({ second: timeCount.second() - 1 });
         // TODO: update timer display
-        console.log(timeCount.format(formatter));
+        if (timeCount.minute() === 0 && timeCount.second() === 0) {
+            clearInterval(intervalID);
+        }
     }, 1000)
 }
 timer();
