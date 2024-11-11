@@ -1,6 +1,9 @@
 function appendToBody() {
     document.querySelector("body").append(...arguments);
 }
+function updateCountTimer(updatedTime) {
+    document.querySelector(".countTimer").innerText = updatedTime;
+}
 function InitializeElements() {
     const pomodoroContainer = document.createElement("div");
     pomodoroContainer.classList.add("pomodoroContainer");
@@ -47,4 +50,4 @@ function InitializeElements() {
 }
 
 
-export {InitializeElements};
+export {InitializeElements, updateCountTimer};
