@@ -3,4 +3,3 @@ import { InitializeElements } from "./dom";
 import { timer } from "./timer";
 
 InitializeElements();
-timer(25);

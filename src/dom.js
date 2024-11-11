@@ -1,3 +1,4 @@
+import { timer } from "./timer";
 function appendToBody() {
     document.querySelector("body").append(...arguments);
 }
@@ -10,20 +11,27 @@ function InitializeElements() {
 
     const timerType = document.createElement("div");
     timerType.classList.add("timers");
-
+    let minutes;
     // timers
     const pomodoroTimer = document.createElement("button");
     pomodoroTimer.classList.add("pomodoroTimer","timer");
     pomodoroTimer.innerText = "pomodoro";
+    pomodoroTimer.addEventListener("click", () => {
+        minutes = 25;
+    });
 
     const shortBreakTimer = document.createElement("button");
     shortBreakTimer.classList.add("shortBreakTimer", "timer");
     shortBreakTimer.innerText = "short break";
-
+    shortBreakTimer.addEventListener("click", () => {
+        minutes = 5;
+    });
     const longBreakTimer = document.createElement("button");
     longBreakTimer.classList.add("pomodoroTimer", "timer");
     longBreakTimer.innerText = "long break";
-
+    longBreakTimer.addEventListener("click", () => {
+        minutes = 15;
+    });
     timerType.append(pomodoroTimer,shortBreakTimer,longBreakTimer);
 
     const countTimer = document.createElement("div");
@@ -36,6 +44,9 @@ function InitializeElements() {
     const startButton = document.createElement("button");
     startButton.innerText = "start";
     startButton.classList.add("start");
+    startButton.addEventListener("click", () => {
+        timer(minutes);
+    })
 
     // TODO: Restart button
     // TODO: Config button
