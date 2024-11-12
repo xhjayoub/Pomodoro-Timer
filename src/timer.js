@@ -13,6 +13,7 @@ function timer(n) {
         }
         updateCountTimer(timeCount.format(formatter));
     }, 1000)
+    return intervalID;
 }
 
 export { timer };

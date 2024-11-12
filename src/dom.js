@@ -11,7 +11,8 @@ function InitializeElements() {
 
     const timerType = document.createElement("div");
     timerType.classList.add("timers");
-    let minutes;
+    let minutes = 25;
+    let intervalID;
     // timers
     const pomodoroTimer = document.createElement("button");
     pomodoroTimer.classList.add("pomodoroTimer","timer");
@@ -19,6 +20,9 @@ function InitializeElements() {
     pomodoroTimer.addEventListener("click", () => {
         minutes = 25;
         countTimer.innerText = '25:00';
+        if (intervalID !== undefined) {
+            clearInterval(intervalID);
+        }
     });
 
     const shortBreakTimer = document.createElement("button");
@@ -27,6 +31,9 @@ function InitializeElements() {
     shortBreakTimer.addEventListener("click", () => {
         minutes = 5;
         countTimer.innerText = '05:00';
+        if (intervalID !== undefined) {
+            clearInterval(intervalID);
+        }
     });
     const longBreakTimer = document.createElement("button");
     longBreakTimer.classList.add("pomodoroTimer", "timer");
@@ -34,6 +41,9 @@ function InitializeElements() {
     longBreakTimer.addEventListener("click", () => {
         minutes = 15;
         countTimer.innerText = '15:00';
+        if (intervalID !== undefined) {
+            clearInterval(intervalID);
+        }
     });
     timerType.append(pomodoroTimer,shortBreakTimer,longBreakTimer);
 
@@ -48,7 +58,7 @@ function InitializeElements() {
     startButton.innerText = "start";
     startButton.classList.add("start");
     startButton.addEventListener("click", () => {
-        timer(minutes);
+        intervalID = timer(minutes);
     })
 
     // TODO: Restart button
