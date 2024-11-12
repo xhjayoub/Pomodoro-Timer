@@ -57,7 +57,15 @@ function InitializeElements() {
     const startButton = document.createElement("button");
     startButton.innerText = "start";
     startButton.classList.add("start");
+    let startButtonType = 'start';
     startButton.addEventListener("click", () => {
+        if (startButtonType === 'start') {
+            startButton.innerText = 'pause';
+            startButtonType = 'pause';
+        } else {
+            startButton.innerText = 'start';
+            startButtonType = 'start';
+        }
         intervalID = timer(minutes);
     })
 
