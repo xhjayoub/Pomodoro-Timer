@@ -1,13 +1,13 @@
-import moment from "moment";
+import moment, { min } from "moment";
 import { updateCountTimer } from "./dom";
 
 const currentState = {
     minute:0,
     second:0,
 }
-function timer(n) {
+function timer(minutes, seconds) {
     let timeCount = moment();
-    timeCount.set({ minute: n, second: 0 });
+    timeCount.set({ minute: minutes, second: seconds });
     const formatter = "mm:ss";
     let intervalID = setInterval(() => {
         timeCount.set({ second: timeCount.second() - 1 });

@@ -1,4 +1,4 @@
-import { timer } from "./timer";
+import { timer, currentState } from "./timer";
 function appendToBody() {
     document.querySelector("body").append(...arguments);
 }
@@ -12,6 +12,7 @@ function InitializeElements() {
     const timerType = document.createElement("div");
     timerType.classList.add("timers");
     let minutes = 25;
+    let seconds = 0;
     let intervalID;
     // timers
     const pomodoroTimer = document.createElement("button");
@@ -60,13 +61,19 @@ function InitializeElements() {
     let startButtonType = 'start';
     startButton.addEventListener("click", () => {
         if (startButtonType === 'start') {
+            // when start is clicked
             startButton.innerText = 'pause';
             startButtonType = 'pause';
+            intervalID = timer(minutes, seconds);
         } else {
+            // when pause is clicked
             startButton.innerText = 'start';
             startButtonType = 'start';
+            clearInterval(intervalID);
+            minutes = currentState.minute;
+            seconds = currentState.second;
         }
-        intervalID = timer(minutes);
+        
     })
 
     // TODO: Restart button
