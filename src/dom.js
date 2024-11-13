@@ -1,4 +1,4 @@
-import { timer, currentState } from "./timer";
+import { timer, currentState, neededClearInterval } from "./timer";
 function appendToBody() {
     document.querySelector("body").append(...arguments);
 }
@@ -20,10 +20,11 @@ function InitializeElements() {
     pomodoroTimer.innerText = "pomodoro";
     pomodoroTimer.addEventListener("click", () => {
         minutes = 25;
+        seconds = 0;
         countTimer.innerText = '25:00';
-        if (intervalID !== undefined) {
-            clearInterval(intervalID);
-        }
+        neededClearInterval(intervalID);
+        startButton.innerText = 'start';
+        startButtonType = 'start';
     });
 
     const shortBreakTimer = document.createElement("button");
@@ -31,20 +32,22 @@ function InitializeElements() {
     shortBreakTimer.innerText = "short break";
     shortBreakTimer.addEventListener("click", () => {
         minutes = 5;
+        seconds = 0;
         countTimer.innerText = '05:00';
-        if (intervalID !== undefined) {
-            clearInterval(intervalID);
-        }
+        neededClearInterval(intervalID);
+        startButton.innerText = 'start';
+        startButtonType = 'start';
     });
     const longBreakTimer = document.createElement("button");
     longBreakTimer.classList.add("pomodoroTimer", "timer");
     longBreakTimer.innerText = "long break";
     longBreakTimer.addEventListener("click", () => {
         minutes = 15;
+        seconds = 0;
         countTimer.innerText = '15:00';
-        if (intervalID !== undefined) {
-            clearInterval(intervalID);
-        }
+        neededClearInterval(intervalID);
+        startButton.innerText = 'start';
+        startButtonType = 'start';
     });
     timerType.append(pomodoroTimer,shortBreakTimer,longBreakTimer);
 

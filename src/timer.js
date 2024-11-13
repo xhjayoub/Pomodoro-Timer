@@ -1,4 +1,4 @@
-import moment, { min } from "moment";
+import moment from "moment";
 import { updateCountTimer } from "./dom";
 
 const currentState = {
@@ -21,5 +21,10 @@ function timer(minutes, seconds) {
     }, 1000)
     return intervalID;
 }
+function neededClearInterval(intervalID) {
+    if (intervalID !== undefined) {
+        clearInterval(intervalID);
+    }
+}
 
-export { timer, currentState };
+export { timer, currentState, neededClearInterval };
