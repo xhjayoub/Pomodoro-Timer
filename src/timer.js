@@ -9,15 +9,19 @@ function timer(minutes, seconds) {
     let timeCount = moment();
     timeCount.set({ minute: minutes, second: seconds });
     const formatter = "mm:ss";
+    const firstFormat = timeCount.format(formatter);
     let intervalID = setInterval(() => {
         timeCount.set({ second: timeCount.second() - 1 });
-        // TODO: update timer display
         if (timeCount.minute() === 0 && timeCount.second() === 0) {
+            console.log("yees");
+            console.log(firstFormat);
+            updateCountTimer(firstFormat);
             clearInterval(intervalID);
+        } else {
+            updateCountTimer(timeCount.format(formatter));
+            currentState.minute = timeCount.minute();
+            currentState.second = timeCount.second();
         }
-        updateCountTimer(timeCount.format(formatter));
-        currentState.minute = timeCount.minute();
-        currentState.second = timeCount.second();
     }, 1000)
     return intervalID;
 }
