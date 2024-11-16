@@ -16,6 +16,7 @@ function InitializeElements() {
     let minutes = 25;
     let seconds = 0;
     let intervalID;
+    let mmss = '25:00';
     // timers
     const pomodoroTimer = document.createElement("button");
     pomodoroTimer.classList.add("pomodoroTimer","timer");
@@ -24,6 +25,7 @@ function InitializeElements() {
         minutes = 25;
         seconds = 0;
         countTimer.innerText = '25:00';
+        mmss = '25:00';
         neededClearInterval(intervalID);
         startButton.innerText = 'start';
         startButtonType = 'start';
@@ -36,6 +38,7 @@ function InitializeElements() {
         minutes = 5;
         seconds = 0;
         countTimer.innerText = '05:00';
+        mmss = '05:00';
         neededClearInterval(intervalID);
         startButton.innerText = 'start';
         startButtonType = 'start';
@@ -47,6 +50,7 @@ function InitializeElements() {
         minutes = 15;
         seconds = 0;
         countTimer.innerText = '15:00';
+        mmss = '15:00';
         neededClearInterval(intervalID);
         startButton.innerText = 'start';
         startButtonType = 'start';
@@ -86,7 +90,10 @@ function InitializeElements() {
     const restartBtn = document.createElement("img");
     restartBtn.setAttribute("src",restartButtonPng);
     restartBtnCont.append(restartBtn);
-
+    restartBtnCont.addEventListener("click", () => {
+        neededClearInterval(intervalID);
+        updateCountTimer(mmss);
+    })
     // TODO: Config button
 
     // append to actions
