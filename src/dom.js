@@ -93,6 +93,8 @@ function InitializeElements() {
     restartBtnCont.addEventListener("click", () => {
         neededClearInterval(intervalID);
         updateCountTimer(mmss);
+        startButton.innerText = 'start';
+        startButtonType = 'start';
     })
     // TODO: Config button
 
