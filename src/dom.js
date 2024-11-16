@@ -1,4 +1,6 @@
 import { timer, currentState, neededClearInterval } from "./timer";
+import restartButtonPng from "./rsc/restartIcon.png";
+
 function appendToBody() {
     document.querySelector("body").append(...arguments);
 }
@@ -80,10 +82,15 @@ function InitializeElements() {
     })
 
     // TODO: Restart button
+    const restartBtnCont = document.createElement("div");
+    const restartBtn = document.createElement("img");
+    restartBtn.setAttribute("src",restartButtonPng);
+    restartBtnCont.append(restartBtn);
+
     // TODO: Config button
 
     // append to actions
-    actions.append(startButton);
+    actions.append(startButton, restartBtnCont);
 
     // Append to container
     pomodoroContainer.append(timerType, countTimer, actions);
